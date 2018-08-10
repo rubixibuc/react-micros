@@ -3,19 +3,21 @@ const webpack = require("webpack");
 const project = require("../project");
 
 module.exports = {
-  context: project.root,
+  context: __dirname,
   entry: {
     vendors: ["react", "react-dom"]
   },
   output: {
     path: path.join(project.root, "dist", "vendors"),
-    filename: "vendors.[name].js",
-    library: "[name]_[hash]"
+    filename: "[name].dll.js",
+    library: "[name]"
   },
   plugins: [
+    new webpack.NamedModulesPlugin(),
     new webpack.DllPlugin({
+      context: __dirname,
       path: path.join(project.root, "dist", "vendors", "[name]-manifest.json"),
-      name: "[name]_[hash]"
+      name: "[name]"
     })
   ]
 };
