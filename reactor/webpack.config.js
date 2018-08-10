@@ -2,9 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const project = require("../project");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-var nodeExternals = require("webpack-node-externals");
-
-console.log("project-root", project.root);
+const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 
 module.exports = {
   context: __dirname,
@@ -15,7 +13,7 @@ module.exports = {
     library: "reactor",
     libraryTarget: "umd",
     filename: "[name].[chunkhash].js",
-      path: path.join(project.root, 'dist')
+    path: path.join(project.root, "dist")
   },
   module: {
     rules: [
@@ -41,6 +39,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: path.join(__dirname, "public", "index.html"),
       filename: path.join(project.root, "dist", "index.html")
-    })
+    }),
+    new AddAssetHtmlPlugin([
+      {
+        filepath: path.resolve(project.root, "dist", "vendors", "*.dll.js"),
+        includeSourcemap: false
+      }
+    ])
   ]
 };
