@@ -12,8 +12,8 @@ module.exports = {
   output: {
     library: "reactor",
     libraryTarget: "umd",
-    filename: "[name].[chunkhash].js",
-    path: path.join(project.root, "dist", 'reactor')
+    filename: "reactor.[chunkhash].js",
+    path: path.join(project.root, "dist", "reactor")
   },
   module: {
     rules: [
@@ -38,7 +38,7 @@ module.exports = {
     }),
     new HtmlWebPackPlugin({
       template: path.join(__dirname, "public", "index.html"),
-      filename: path.join(project.root, "dist", 'reactor', "index.html")
+      filename: path.join(project.root, "dist", "reactor", "index.html")
     }),
     new AddAssetHtmlPlugin([
       {

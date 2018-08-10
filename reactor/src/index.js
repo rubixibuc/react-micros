@@ -6,3 +6,9 @@ const Index = () => {
 };
 
 ReactDOM.render(<Index />, document.getElementById("index"));
+
+// TODO: test loading core modules
+// TODO: install redux
+// TODO: install react router
+// TODO: load 1 route dynamically
+// TODO: load multiple routes dynamically
