@@ -1,0 +1,1 @@
+export { routingReducer } from './routingReducer'
