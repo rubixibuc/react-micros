@@ -4,6 +4,8 @@ const project = require("../project");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 module.exports = {
   context: __dirname,
@@ -46,7 +48,12 @@ module.exports = {
         filepath: path.resolve(project.root, "dist", "vendors", "*.dll.js"),
         includeSourcemap: false
       }
-    ])
+    ]),
+    new BundleAnalyzerPlugin({
+      analyzerMode: "static",
+      openAnalyzer: false,
+      reportFilename: "reactor-report.html"
+    })
   ],
   optimization: {
     minimizer: [new UglifyJsPlugin()]

@@ -2,6 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const project = require("../../project");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 module.exports = {
   context: __dirname,
@@ -34,6 +36,11 @@ module.exports = {
         "vendors",
         "vendors-manifest.json"
       ))
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: "static",
+      openAnalyzer: false,
+      reportFilename: "redux-report.html"
     })
   ],
   optimization: {
