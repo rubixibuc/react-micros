@@ -10,7 +10,7 @@ module.exports = {
   output: {
     library: "core-1",
     libraryTarget: "umd",
-    filename: "core-1.[chunkhash].js",
+    filename: "core-1.js",
     path: path.join(project.root, "dist", "cores")
   },
   module: {

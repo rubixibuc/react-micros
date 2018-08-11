@@ -5,7 +5,7 @@ const project = require("../project");
 module.exports = {
   context: __dirname,
   entry: {
-    vendors: ["react", "react-dom"]
+    vendors: ["react", "react-async-script-loader", "react-dom", "react-router"]
   },
   output: {
     path: path.join(project.root, "dist", "vendors"),
