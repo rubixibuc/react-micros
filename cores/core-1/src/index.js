@@ -1,1 +1,1 @@
-export { Core1 } from "./components/core-1";
+export { Core1 } from "./components/Core1";

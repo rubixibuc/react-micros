@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const project = require("../../project");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   context: __dirname,
@@ -34,5 +35,8 @@ module.exports = {
         "vendors-manifest.json"
       ))
     })
-  ]
+  ],
+  optimization: {
+    minimizer: [new UglifyJsPlugin()]
+  }
 };

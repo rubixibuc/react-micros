@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const project = require("../project");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   context: __dirname,
@@ -46,5 +47,8 @@ module.exports = {
         includeSourcemap: false
       }
     ])
-  ]
+  ],
+  optimization: {
+    minimizer: [new UglifyJsPlugin()]
+  }
 };
