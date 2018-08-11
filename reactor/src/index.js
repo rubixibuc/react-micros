@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import scriptLoader from "react-async-script-loader";
-import { renderWhen } from "./hocs";
-import { connect } from "react-redux";
-import { compose } from "recompose";
+import { branch, compose } from "recompose";
 
 const App = scriptLoader(["/cores/core-1.js"])(() => {
   return <div>Hello React!</div>;
@@ -11,10 +9,14 @@ const App = scriptLoader(["/cores/core-1.js"])(() => {
 
 const Bootstrapper = compose(
   scriptLoader(["/cores/redux.js"]),
-  renderWhen({
-    checkProp: "isScriptLoadSucceed",
-    OtherComponent: () => <div>Loading</div>
-  })
+  branch(
+    ({ isScriptLoaded }) => !isScriptLoaded,
+    renderComponent(() => <div>Loading Application...</div>)
+  ),
+  branch(
+    ({ isScriptLoadSucceed }) => !isScriptLoadSucceed,
+    renderComponent(() => <div>Failed To Load Application...</div>)
+  )
 )(({ children }) => children);
 
 ReactDOM.render(
@@ -25,7 +27,12 @@ ReactDOM.render(
 );
 
 // TODO: test loading core modules -> done
-// TODO: install redux
+// TODO: install redux -> done
+// TODO: convert render when to recompose branch hoc
+// TODO: consolidate reactor core webpack configs
+// TODO: try referencing redux from core reactor core
+// TODO: test redux
 // TODO: install react router
 // TODO: load 1 route dynamically
 // TODO: load multiple routes dynamically
+// TODO: create meta orchestrator/bootstrap core
