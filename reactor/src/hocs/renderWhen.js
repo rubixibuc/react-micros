@@ -1,2 +1,11 @@
-export const renderWhen = ({ checkProp, OtherComponent }) => Component => (props) =>
-    checkProp ? <Component {...props} /> : (OtherComponent ? <OtherComponent {...props}/> : null);
+import React from "react";
+
+export const renderWhen = ({
+  checkProp,
+  OtherComponent
+}) => Component => props =>
+  checkProp ? (
+    <Component {...props} />
+  ) : OtherComponent ? (
+    <OtherComponent {...props} />
+  ) : null;

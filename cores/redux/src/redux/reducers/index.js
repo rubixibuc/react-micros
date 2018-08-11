@@ -1,1 +1,1 @@
-export { routingReducer } from './routingReducer'
+export { routingReducer } from "./routingReducer";

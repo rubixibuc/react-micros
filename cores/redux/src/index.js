@@ -1,1 +1,1 @@
-export { default as store } from './redux/store'
+export { default as store } from "./redux/store";

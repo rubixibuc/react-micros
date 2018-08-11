@@ -1,8 +1,11 @@
-import { createStore, combineReducers } from 'redux';
-import { routingReducer } from './reducers'
+import { createStore, combineReducers } from "redux";
+import { routingReducer } from "./reducers";
 
-export default createStore(combineReducers({
+export default createStore(
+  combineReducers({
     app: combineReducers({
-        routing: routingReducer
+      routing: routingReducer
     })
-}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+  }),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);

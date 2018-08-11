@@ -1,1 +1,1 @@
-export { addRoutes } from './addRoutes'
+export { addRoutes } from "./addRoutes";

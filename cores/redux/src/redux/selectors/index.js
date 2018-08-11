@@ -1,1 +1,1 @@
-export { selectRoutes } from './selectRoutes'
+export { selectRoutes } from "./selectRoutes";

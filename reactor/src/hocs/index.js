@@ -1,1 +1,1 @@
-export { renderWhen } from './renderWhen'
+export { renderWhen } from "./renderWhen";
