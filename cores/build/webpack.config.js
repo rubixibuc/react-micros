@@ -64,6 +64,9 @@ module.exports = env => {
     ],
     optimization: {
       minimizer: [new UglifyJsPlugin()]
-    }
+    },
+      externals: [
+        'core-redux'
+      ]
   };
 };

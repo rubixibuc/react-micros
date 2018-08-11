@@ -8,7 +8,7 @@ const App = scriptLoader(["/cores/core-1.js"])(() => {
 });
 
 const Bootstrapper = compose(
-  scriptLoader(["/cores/redux.js"]),
+  scriptLoader(["/cores/core-redux.js"]),
   branch(
     ({ isScriptLoaded }) => !isScriptLoaded,
     renderComponent(() => <div>Loading Application...</div>)
@@ -30,9 +30,9 @@ ReactDOM.render(
 // TODO: install redux -> done
 // TODO: convert render when to recompose branch hoc -> done
 // TODO: consolidate reactor core webpack configs -> done
-// TODO: create meta orchestrator/bootstrap core
 // TODO: try referencing redux from core reactor core
 // TODO: test redux
+// TODO: create meta orchestrator/bootstrap core
 // TODO: install react router
 // TODO: load 1 route dynamically
 // TODO: load multiple routes dynamically
