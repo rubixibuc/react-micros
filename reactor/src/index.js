@@ -30,9 +30,9 @@ ReactDOM.render(
 // TODO: install redux -> done
 // TODO: convert render when to recompose branch hoc -> done
 // TODO: consolidate reactor core webpack configs -> done
-// TODO: try referencing redux from core reactor core
-// TODO: test redux
+// TODO: try referencing redux from core reactor core -> done
 // TODO: create meta orchestrator/bootstrap core
+// TODO: test redux
 // TODO: install react router
 // TODO: load 1 route dynamically
 // TODO: load multiple routes dynamically
