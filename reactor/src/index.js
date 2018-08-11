@@ -1,18 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import scriptLoader from "react-async-script-loader";
-import { connect} from 'react-redux'
+import { renderWhen} from "./hocs";
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
 
 
-// const Index = scriptLoader(["/cores/core-1.js"])(() => {
-//   return <div>Hello React!</div>;
-// });
+const App = scriptLoader(["/cores/redux.js"])(() => {
+  return <div>Hello React!</div>;
+});
 
-const App = () => {
+const Bootstrapper = compose(
+    scriptLoader([
+        '/cores/redux.js'
+    ]),
+    // renderWhen({
+    //     checkProp: 'isScriptLoadSucceed',
+    //     OtherComponent: () => <div>Loading</div>
+    // })
+)(App);
 
-}
-
-ReactDOM.render(<Index />, document.getElementById("index"));
+ReactDOM.render(<App/>, document.getElementById("index"));
 
 // TODO: test loading core modules -> done
 // TODO: install redux

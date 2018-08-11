@@ -1,1 +1,1 @@
-export { BlockingRender } from './BlockingRender'
+export { renderWhen } from './renderWhen'

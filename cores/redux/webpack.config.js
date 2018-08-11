@@ -10,7 +10,7 @@ module.exports = {
   output: {
     library: "redux",
     libraryTarget: "umd",
-    filename: "redux",
+    filename: "redux.js",
     path: path.join(project.root, "dist", "cores")
   },
   module: {
