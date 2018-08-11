@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import scriptLoader from "react-async-script-loader";
-import { branch, compose } from "recompose";
+import { branch, compose, renderComponent } from "recompose";
 
 const App = scriptLoader(["/cores/core-1.js"])(() => {
   return <div>Hello React!</div>;
