@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "server": "http-server ../dist",
+    "server": "http-server -c-1 ../dist",
+    "watch": "webpack --mode=production --progress --watch",
     "build": "webpack --mode=production --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
