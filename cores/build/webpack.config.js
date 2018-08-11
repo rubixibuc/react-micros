@@ -4,7 +4,6 @@ const project = require("../../project");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
-const WebpackLoadersContextPlugin = require("webpack-loaders-context-plugin");
 
 module.exports = env => {
   if (!env || !env.id) {
@@ -65,8 +64,6 @@ module.exports = env => {
     optimization: {
       minimizer: [new UglifyJsPlugin()]
     },
-      externals: [
-        'core-redux'
-      ]
+    externals: ["core-redux"]
   };
 };
