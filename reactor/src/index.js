@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import scriptLoader from "react-async-script-loader";
 import { branch, compose, renderComponent } from "recompose";
-import { DynamicLoadScript } from "./hocs";
+import { DynamicLoadScript } from "./components/hocs";
 import _ from "lodash";
 
 const App = () => <div>Hello React!</div>;
@@ -46,8 +46,9 @@ ReactDOM.render(
 // TODO: convert render when to recompose branch hoc -> done
 // TODO: consolidate reactor core webpack configs -> done
 // TODO: try referencing redux from core reactor core -> done
-// TODO: create meta orchestrator/bootstrap core
-// TODO: test redux
+// TODO: create meta orchestrator/bootstrap core -> done
 // TODO: install react router
+// TODO: test redux
 // TODO: load 1 route dynamically
 // TODO: load multiple routes dynamically
+// TODO: include all dependencies in package.json inside vendors dll automatically
