@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import scriptLoader from "react-async-script-loader";
 import { branch, compose, renderComponent } from "recompose";
+import { DynamicLoadScript } from "./hocs";
+import _ from "lodash";
 
-const App = scriptLoader(["/cores/core-1.js"])(() => {
-  return <div>Hello React!</div>;
-});
+const App = <div>Hello React!</div>;
 
 const Bootstrapper = compose(
-  scriptLoader(["/cores/core-redux.js"]),
+  scriptLoader(["/cores/orchestrator.js"]),
   branch(
     ({ isScriptLoaded }) => !isScriptLoaded,
     renderComponent(() => <div>Loading Application...</div>)
@@ -17,7 +17,23 @@ const Bootstrapper = compose(
     ({ isScriptLoadSucceed }) => !isScriptLoadSucceed,
     renderComponent(() => <div>Failed To Load Application...</div>)
   )
-)(({ children }) => children);
+)(({ isScriptLoadSucceed, children }) => {
+    console.log('isScriptLoadSucceed', isScriptLoadSucceed);
+  const { requiredCores, deferredCores } = require("orchestrator");
+
+  const coreFileMapping = core => `/cores/${core}`;
+
+  return (
+    <DynamicLoadScript
+      scripts={[
+        _.map(requiredCores, coreFileMapping),
+        _.map(deferredCores, coreFileMapping())
+      ]}
+    >
+      {children}
+    </DynamicLoadScript>
+  );
+});
 
 ReactDOM.render(
   <Bootstrapper>

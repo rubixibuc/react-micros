@@ -57,5 +57,6 @@ module.exports = {
   ],
   optimization: {
     minimizer: [new UglifyJsPlugin()]
-  }
+  },
+  externals: {"orchestrator": "orchestrator"}
 };

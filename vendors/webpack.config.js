@@ -7,6 +7,7 @@ module.exports = {
   context: __dirname,
   entry: {
     vendors: [
+      "lodash",
       "react",
       "react-async-script-loader",
       "react-dom",
