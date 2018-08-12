@@ -1,1 +1,1 @@
-export { DynamicLoadScript } from "./DynamicLoadScript";
+export { DynamicScriptLoader } from "./DynamicScriptLoader";

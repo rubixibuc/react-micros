@@ -2,13 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import scriptLoader from "react-async-script-loader";
 import { branch, compose, renderComponent } from "recompose";
-import { DynamicLoadScript } from "./components/hocs";
+import { DynamicScriptLoader } from "./components/hocs";
 import _ from "lodash";
+import { Provider } from 'react-redux'
+import {Deferred} from "./components/components";
 
 const App = () => <div>Hello React!</div>;
 
 const Bootstrapper = compose(
-  scriptLoader(["/cores/coreOrchestrator.js"]),
+  scriptLoader("/cores/coreRedux.js", "/cores/coreComponents.js", "/cores/coreOrchestrator.js"),
   branch(
     ({ isScriptLoaded }) => !isScriptLoaded,
     renderComponent(() => <div>Loading Application...</div>)
@@ -18,25 +20,31 @@ const Bootstrapper = compose(
     renderComponent(() => <div>Failed To Load Application...</div>)
   )
 )(({ isScriptLoadSucceed, children }) => {
-  const { requiredCores, deferredCores } = require("coreOrchestrator");
+  const { deferredCores } = require("coreOrchestrator");
 
   const coreFileMapping = core => `/cores/${core}.js`;
 
   return (
-    <DynamicLoadScript
+    <DynamicScriptLoader
       scripts={[
-        _.map(requiredCores, coreFileMapping),
         _.map(deferredCores, coreFileMapping)
       ]}
     >
       {children}
-    </DynamicLoadScript>
+    </DynamicScriptLoader>
   );
 });
 
 ReactDOM.render(
   <Bootstrapper>
-    <App />
+    <Deferred>
+      {() => (
+       <Provider store={require('coreRedux').store}>
+         <App />
+       </Provider>
+  )}
+    </Deferred>
+
   </Bootstrapper>,
   document.getElementById("index")
 );
