@@ -14,7 +14,7 @@ module.exports = {
   },
   output: {
     library: "reactor",
-    libraryTarget: "umd",
+    libraryTarget: "var",
     filename: "reactor.[chunkhash].js",
     path: path.join(project.root, "dist", "reactor")
   },
@@ -58,5 +58,5 @@ module.exports = {
   optimization: {
     minimizer: [new UglifyJsPlugin()]
   },
-  externals: {"orchestrator": "orchestrator"}
+  externals: /^(core.*)$/i
 };

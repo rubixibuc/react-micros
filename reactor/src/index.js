@@ -5,10 +5,10 @@ import { branch, compose, renderComponent } from "recompose";
 import { DynamicLoadScript } from "./hocs";
 import _ from "lodash";
 
-const App = <div>Hello React!</div>;
+const App = () => <div>Hello React!</div>;
 
 const Bootstrapper = compose(
-  scriptLoader(["/cores/orchestrator.js"]),
+  scriptLoader(["/cores/coreOrchestrator.js"]),
   branch(
     ({ isScriptLoaded }) => !isScriptLoaded,
     renderComponent(() => <div>Loading Application...</div>)
@@ -18,16 +18,15 @@ const Bootstrapper = compose(
     renderComponent(() => <div>Failed To Load Application...</div>)
   )
 )(({ isScriptLoadSucceed, children }) => {
-    console.log('isScriptLoadSucceed', isScriptLoadSucceed);
-  const { requiredCores, deferredCores } = require("orchestrator");
+  const { requiredCores, deferredCores } = require("coreOrchestrator");
 
-  const coreFileMapping = core => `/cores/${core}`;
+  const coreFileMapping = core => `/cores/${core}.js`;
 
   return (
     <DynamicLoadScript
       scripts={[
         _.map(requiredCores, coreFileMapping),
-        _.map(deferredCores, coreFileMapping())
+        _.map(deferredCores, coreFileMapping)
       ]}
     >
       {children}

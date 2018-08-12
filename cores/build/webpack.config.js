@@ -23,7 +23,7 @@ module.exports = env => {
     },
     output: {
       library: env.id,
-      libraryTarget: "umd",
+      libraryTarget: "var",
       filename: env.id + ".js",
       path: path.join(project.root, "dist", "cores")
     },
@@ -64,6 +64,6 @@ module.exports = env => {
     optimization: {
       minimizer: [new UglifyJsPlugin()]
     },
-    externals: ["core-redux"]
+    externals: /^(core.*)$/i
   };
 };
