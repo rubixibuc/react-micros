@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { Bootstrapper} from "./components/components";
+import { Bootstrapper } from "./components/components";
 
 ReactDOM.render(
   <Bootstrapper>
     {() => (
       <Provider store={require("coreRedux").store}>
-          <div>Hello React!</div>
+        <div>Hello React!</div>
       </Provider>
     )}
   </Bootstrapper>,
