@@ -1,3 +1,1 @@
-export const deferredCores = [
-    'core1'
-];
+export const deferredCores = ["core1"];
