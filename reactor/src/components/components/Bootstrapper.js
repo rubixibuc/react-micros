@@ -1,15 +1,17 @@
 import React from "react";
 import _ from "lodash";
 import scriptLoader from "react-async-script-loader";
-import { DynamicScriptLoader } from "../hocs";
+import { DynamicScriptLoader } from "./DynamicScriptLoader";
 import { branch, compose, renderComponent } from "recompose";
 
+const initialScripts = [
+  "/cores/coreRedux.js",
+  "/cores/coreComponents.js",
+  "/cores/coreOrchestrator.js"
+];
+
 export const Bootstrapper = compose(
-  scriptLoader(
-    "/cores/coreRedux.js",
-    "/cores/coreComponents.js",
-    "/cores/coreOrchestrator.js"
-  ),
+  scriptLoader(...initialScripts),
   branch(
     ({ isScriptLoaded }) => !isScriptLoaded,
     renderComponent(() => <div>Loading Application...</div>)
