@@ -9,8 +9,8 @@ export const DynamicRoute = ({
   component,
   componentCore,
   requiredCores,
-  LoadingComponent,
-  FailureComponent,
+  loadingComponent,
+  failureComponent,
   ...props
 }) => {
   return (
@@ -27,13 +27,13 @@ export const DynamicRoute = ({
           branch(
             ({ isScriptLoaded }) => !isScriptLoaded,
             renderComponent(
-              LoadingComponent || (() => <div>Loading Content...</div>)
+              loadingComponent || (() => <div>Loading Content...</div>)
             )
           ),
           branch(
             ({ isScriptLoadSucceed }) => !isScriptLoadSucceed,
             renderComponent(
-              FailureComponent || (() => <div>Failed To Load Content.</div>)
+              failureComponent || (() => <div>Failed To Load Content.</div>)
             )
           )
         )(props => {
