@@ -37,11 +37,14 @@ export const DynamicRoute = ({
             )
           )
         )(props => {
-          const CoreComponent = window[`core${componentCore}`][component];
+          const CoreComponent = _.get(window, [
+            `core${componentCore}`,
+            component
+          ]);
           return CoreComponent ? (
             <CoreComponent {...props} />
           ) : (
-            <div>Unable to load content</div>
+            <div>Unable to load content.</div>
           );
         });
 

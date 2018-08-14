@@ -30,3 +30,5 @@ ReactDOM.render(
 // TODO: one level deep mapping of required cores
 // TODO: include all dependencies in package.json inside vendors dll automatically
 // TODO: load multiple routes dynamically
+// TODO: add webpack defined for common variables
+// TODO: move common config into project.js
