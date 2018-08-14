@@ -11,4 +11,4 @@ export const DynamicRoutes = compose(
         routes: selectors.selectRoutes(state)
     })
 ))
-    (({routes}) => <HashRouter>{_.map(routes, (route, index) => <DynamicRoute key={index} path={route.route.path} core={route.core} component={route.component}/>)}</HashRouter>);
+(({routes}) => <HashRouter><React.Fragment>{_.map(routes, (route, index) => <DynamicRoute key={index} path={route.route.path} componentCore={route.componentCore} component={route.component} requiredCores={route.requiredCores}/>)}</React.Fragment></HashRouter>);

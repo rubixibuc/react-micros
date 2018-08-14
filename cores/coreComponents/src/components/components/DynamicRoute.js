@@ -1,12 +1,14 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { compose } from "recompose";
+import { compose, branch, renderComponent } from "recompose";
 import scriptLoader from "react-async-script-loader";
+import _ from 'lodash'
 
 export const DynamicRoute = ({
   scripts,
-    core,
     component,
+    componentCore,
+    requiredCores,
                                  loadingComponent: LoadingComponent,
                                  failureComponent: FailureComponent,
   ...props
@@ -16,7 +18,7 @@ export const DynamicRoute = ({
       {...props}
       render={props => {
         const Component = compose(
-          scriptLoader(scripts),
+          scriptLoader(..._.map(requiredCores, requiredCore => `/cores/core${requiredCore}`)),
           branch(
             ({ isScriptLoaded }) => !isScriptLoaded,
             renderComponent(
@@ -30,7 +32,7 @@ export const DynamicRoute = ({
             )
           )
         )((props) => {
-            const CoreComponent = require(`core${core}`)[component];
+            const CoreComponent = require(`core${componentCore}`)[component];
             if(!CoreComponent) {
                 return <div>Unable to load content</div>
             }
