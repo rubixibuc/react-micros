@@ -64,6 +64,6 @@ module.exports = env => {
     optimization: {
       minimizer: [new UglifyJsPlugin()]
     },
-    externals: /^(core.*)$/i
+    externals: /^(core.+)$/i
   };
 };

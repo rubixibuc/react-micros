@@ -9,8 +9,8 @@ export const DynamicRoute = ({
     component,
     componentCore,
     requiredCores,
-                                 loadingComponent: LoadingComponent,
-                                 failureComponent: FailureComponent,
+                                  LoadingComponent,
+                                  FailureComponent,
   ...props
 }) => {
   return (
@@ -18,7 +18,7 @@ export const DynamicRoute = ({
       {...props}
       render={props => {
         const Component = compose(
-          scriptLoader(..._.map(requiredCores, requiredCore => `/cores/core${requiredCore}`)),
+          scriptLoader(..._.map(requiredCores, requiredCore => `/cores/core${requiredCore}.js`)),
           branch(
             ({ isScriptLoaded }) => !isScriptLoaded,
             renderComponent(
@@ -32,7 +32,7 @@ export const DynamicRoute = ({
             )
           )
         )((props) => {
-            const CoreComponent = require(`core${componentCore}`)[component];
+            const CoreComponent = window[`core${componentCore}`][component];
             if(!CoreComponent) {
                 return <div>Unable to load content</div>
             }

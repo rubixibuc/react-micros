@@ -58,5 +58,5 @@ module.exports = {
   optimization: {
     minimizer: [new UglifyJsPlugin()]
   },
-  externals: /^(core.*)$/i
+  externals: /^(core.+)$/i
 };
