@@ -16,10 +16,7 @@ module.exports = env => {
     context: __dirname,
     entry: [path.join(project.root, "cores", env.id, "src", "index.js")],
     resolve: {
-      modules: [
-        path.join(__dirname, "node_modules"),
-        path.join(project.root, "vendors", "node_modules")
-      ]
+      modules: [path.join(project.root, "vendors", "node_modules")]
     },
     output: {
       library: env.id,
