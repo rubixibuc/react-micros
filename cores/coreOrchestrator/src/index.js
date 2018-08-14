@@ -3,7 +3,7 @@ import { store, actions } from "coreRedux";
 export const routes = [
   {
     component: "Core1",
-    core: "core1",
+    core: "1",
     route: {
       path: "/core1"
     }

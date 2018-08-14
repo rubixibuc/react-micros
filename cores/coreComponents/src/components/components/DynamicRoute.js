@@ -5,10 +5,10 @@ import scriptLoader from "react-async-script-loader";
 
 export const DynamicRoute = ({
   scripts,
-  render,
-  RenderComponent,
-  LoadingComponent,
-  FailureComponent,
+    core,
+    component,
+                                 loadingComponent: LoadingComponent,
+                                 failureComponent: FailureComponent,
   ...props
 }) => {
   return (
@@ -20,16 +20,22 @@ export const DynamicRoute = ({
           branch(
             ({ isScriptLoaded }) => !isScriptLoaded,
             renderComponent(
-              LoadingComponent || (() => <div>Loading Application...</div>)
+              LoadingComponent || (() => <div>Loading Content...</div>)
             )
           ),
           branch(
             ({ isScriptLoadSucceed }) => !isScriptLoadSucceed,
             renderComponent(
-              FailureComponent || (() => <div>Failed to load content</div>)
+              FailureComponent || (() => <div>Failed To Load Content.</div>)
             )
           )
-        )(RenderComponent);
+        )((props) => {
+            const CoreComponent = require(`core${core}`)[component];
+            if(!CoreComponent) {
+                return <div>Unable to load content</div>
+            }
+            return <CoreComponent {...props}/>
+        });
 
         return <Component {...props} />;
       }}

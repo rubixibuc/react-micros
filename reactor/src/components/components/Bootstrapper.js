@@ -16,7 +16,7 @@ export const Bootstrapper = compose(
   ),
   branch(
     ({ isScriptLoadSucceed }) => !isScriptLoadSucceed,
-    renderComponent(() => <div>Failed To Load Application...</div>)
+    renderComponent(() => <div>Failed To Load Application.</div>)
   )
 )(({ isScriptLoadSucceed, children }) => (
   <React.Fragment>{children()}</React.Fragment>
