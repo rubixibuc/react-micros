@@ -8,10 +8,12 @@ ReactDOM.render(
     {() => {
       const DynamicRoutes = require("coreComponents").DynamicRoutes;
 
-     return (   <Provider store={require("coreRedux").store}>
-            <DynamicRoutes/>
+      return (
+        <Provider store={require("coreRedux").store}>
+          <DynamicRoutes />
         </Provider>
-     )   }}
+      );
+    }}
   </Bootstrapper>,
   document.getElementById("index")
 );

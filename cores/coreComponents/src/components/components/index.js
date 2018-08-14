@@ -1,2 +1,2 @@
-export { DynamicRoute } from './DynamicRoute'
-export { DynamicRoutes } from './DynamicRoutes'
+export { DynamicRoute } from "./DynamicRoute";
+export { DynamicRoutes } from "./DynamicRoutes";

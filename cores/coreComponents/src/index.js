@@ -1,1 +1,1 @@
-export { DynamicRoute, DynamicRoutes } from './components/components'
+export { DynamicRoute, DynamicRoutes } from "./components/components";
