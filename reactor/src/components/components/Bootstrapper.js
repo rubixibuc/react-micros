@@ -1,7 +1,5 @@
 import React from "react";
-import _ from "lodash";
 import scriptLoader from "react-async-script-loader";
-import { DynamicScriptLoader } from "./DynamicScriptLoader";
 import { branch, compose, renderComponent } from "recompose";
 
 const initialScripts = [
@@ -18,16 +16,8 @@ export const Bootstrapper = compose(
   ),
   branch(
     ({ isScriptLoadSucceed }) => !isScriptLoadSucceed,
-    renderComponent(() => <div>Failed To Load Application...</div>)
+    renderComponent(() => <div>Failed To Load Application.</div>)
   )
-)(({ isScriptLoadSucceed, children }) => {
-  const { deferredCores } = require("coreOrchestrator");
-
-  return (
-    <DynamicScriptLoader
-      scripts={[_.map(deferredCores, core => `/cores/${core}.js`)]}
-    >
-      {children()}
-    </DynamicScriptLoader>
-  );
-});
+)(({ isScriptLoadSucceed, children }) => (
+  <React.Fragment>{children()}</React.Fragment>
+));

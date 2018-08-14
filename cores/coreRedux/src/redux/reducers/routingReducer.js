@@ -1,4 +1,4 @@
-export const routingReducer = (state = {}, { type, payload }) => {
+export const routingReducer = (state = { routes: [] }, { type, payload }) => {
   switch (type) {
     case "ADD_ROUTES":
       return { ...state, routes: [...state.routes, ...payload.routes] };

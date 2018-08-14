@@ -6,7 +6,7 @@
   "scripts": {
     "server": "http-server -c-1 ../dist",
     "watch": "webpack --mode=development --progress --watch",
-    "build": "webpack --mode=development --progress",
+    "build": "webpack --mode=production --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
