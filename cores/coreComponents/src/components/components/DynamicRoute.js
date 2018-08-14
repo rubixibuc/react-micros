@@ -36,14 +36,13 @@ export const DynamicRoute = ({
               failureComponent || (() => <div>Failed To Load Content.</div>)
             )
           )
-        )(
-          props =>
-            window[`core${componentCore}`][component] ? (
-              <CoreComponent {...props} />
-            ) : (
-              <div>Unable to load content</div>
-            )
-        );
+        )(props => {
+          return (CoreComponent = window[`core${componentCore}`][component] ? (
+            <CoreComponent {...props} />
+          ) : (
+            <div>Unable to load content</div>
+          ));
+        });
 
         return <Component {...props} />;
       }}
