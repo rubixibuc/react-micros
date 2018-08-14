@@ -1,0 +1,1 @@
+export { DynamicRoute } from './components/components'

@@ -13,7 +13,7 @@ module.exports = {
       "react-dom",
       "react-redux",
       "react-router",
-        "react-router-dom",
+      "react-router-dom",
       "recompose",
       "redux"
     ]
