@@ -1,3 +1,3 @@
 export const selectRoutes = state => {
-  return state.app.routes;
+  return state.app.routing.routes;
 };

@@ -5,11 +5,13 @@ import { Bootstrapper } from "./components/components";
 
 ReactDOM.render(
   <Bootstrapper>
-    {() => (
-      <Provider store={require("coreRedux").store}>
-        <div>Hello React!</div>
-      </Provider>
-    )}
+    {() => {
+      const DynamicRoutes = require("coreComponents").DynamicRoutes;
+
+     return (   <Provider store={require("coreRedux").store}>
+            <DynamicRoutes/>
+        </Provider>
+     )   }}
   </Bootstrapper>,
   document.getElementById("index")
 );
